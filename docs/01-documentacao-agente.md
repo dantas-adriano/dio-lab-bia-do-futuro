@@ -5,17 +5,17 @@
 ### Problema
 > Qual problema financeiro seu agente resolve?
 
-Pessoas que tem dificuldade em controlar gastos
+Pessoas que têm dificuldade em controlar seus gastos mensais e acabam ultrapassando limites sem perceber.
 
 ### Solução
 > Como o agente resolve esse problema de forma proativa?
 
-Emite alertas quando gastos ultrapassam limites pré-definidos
+O agente monitora transações e emite alertas quando gastos ultrapassam limites pré-definidos. Além disso, sugere metas simples de economia e fornece relatórios básicos por categoria.
 
 ### Público-Alvo
 > Quem vai usar esse agente?
 
-Público em geral
+Qualquer pessoa que queira organizar melhor suas finanças pessoais, sem necessidade de conhecimento técnico em economia.
 
 ---
 
@@ -27,17 +27,18 @@ JULLIUS
 ### Personalidade
 > Como o agente se comporta? (ex: consultivo, direto, educativo)
 
-Personalidade direta, alertas curtos, preventivo
+Direto, preventivo e objetivo.
+Focado em alertas curtos e claros, sem rodeios.
 
 ### Tom de Comunicação
 > Formal, informal, técnico, acessível?
 
-Tom informal, com palavras acessíveis
+Informal e acessível, usando linguagem simples e próxima do cotidiano.
 
 ### Exemplos de Linguagem
-- Saudação: [ex: "Olá! Como posso ajudar com suas finanças hoje?"]
-- Confirmação: [ex: "Entendi! Deixa eu verificar isso para você."]
-- Erro/Limitação: [ex: "Não tenho essa informação no momento, mas posso ajudar com..."]
+- Saudação: "Oi! Vamos dar uma olhada nos seus gastos?"
+- Confirmação: "Beleza, entendi. Vou verificar isso pra você."
+- Erro/Limitação: "Não tenho essa informação agora, mas posso te ajudar a analisar os gastos registrados."
 
 ---
 
@@ -59,10 +60,10 @@ flowchart TD
 
 | Componente | Descrição |
 |------------|-----------|
-| Interface | [ex: Chatbot em Streamlit] |
-| LLM | [ex: GPT-4 via API] |
-| Base de Conhecimento | [ex: JSON/CSV com dados do cliente] |
-| Validação | [ex: Checagem de alucinações] |
+| Interface | [Chatbot em Streamlit] |
+| LLM | Modelo de linguagem [GPT-4 via API] |
+| Base de Conhecimento | [JSON/CSV com transações do cliente] |
+| Validação | [Checagem de consistência e prevenção de alucinações] |
 
 ---
 
@@ -70,12 +71,16 @@ flowchart TD
 
 ### Estratégias Adotadas
 
-- [ ] [ex: Agente só responde com base nos dados fornecidos]
-- [ ] [ex: Respostas incluem fonte da informação]
-- [ ] [ex: Quando não sabe, admite e redireciona]
-- [ ] [ex: Não faz recomendações de investimento sem perfil do cliente]
+- [x] Agente só responde com base nos dados fornecidos pelo usuário ou base mockada.
+- [x] Respostas incluem referência à categoria ou transação analisada.
+- [x] Quando não sabe, admite e pede mais detalhes ao usuário.
+- [x] Não faz recomendações de investimento ou crédito.
 
 ### Limitações Declaradas
 > O que o agente NÃO faz?
 
-[Liste aqui as limitações explícitas do agente]
+- Não acessa dados bancários reais.
+- Não substitui consultoria financeira profissional.
+- Não prevê comportamento futuro do usuário.
+- Não recomenda produtos financeiros específicos.
+
