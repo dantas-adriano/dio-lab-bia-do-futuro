@@ -24,10 +24,6 @@ REGRAS:
 7. Não faça previsões futuras de comportamento financeiro.
 8. Não recomende produtos financeiros específicos.
 
-
-> [!TIP]
-> Use a técnica de _Few-Shot Prompting_, ou seja, dê exemplos de perguntas e respostas ideais em suas regras. Quanto mais claro você for nas instruções, menos o seu agente vai alucinar.
-
 ---
 
 ## Exemplos de Interação
