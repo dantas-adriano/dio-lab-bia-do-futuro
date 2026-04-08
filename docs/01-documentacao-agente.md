@@ -60,10 +60,10 @@ flowchart TD
 
 | Componente | Descrição |
 |------------|-----------|
-| Interface | [Chatbot em Streamlit] |
-| LLM | Modelo de linguagem [GPT-4 via API] |
-| Base de Conhecimento | [JSON/CSV com transações do cliente] |
-| Validação | [Checagem de consistência e prevenção de alucinações] |
+| Interface | Chatbot em Streamlit |
+| LLM | Modelo de linguagem (GPT-4 via API) |
+| Base de Conhecimento | JSON/CSV com transações do cliente |
+| Validação | Checagem de consistência e prevenção de alucinações |
 
 ---
 
