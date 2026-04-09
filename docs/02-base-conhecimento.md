@@ -6,13 +6,10 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 
 | Arquivo | Formato | Utilização no Agente |
 |---------|---------|---------------------|
-| `historico_atendimento.csv` | CSV | Contextualizar interações anteriores |
-| `perfil_investidor.json` | JSON | Personalizar recomendações |
-| `produtos_financeiros.json` | JSON | Sugerir produtos adequados ao perfil |
-| `transacoes.csv` | CSV | Analisar padrão de gastos do cliente |
-
-> [!TIP]
-> **Quer um dataset mais robusto?** Você pode utilizar datasets públicos do [Hugging Face](https://huggingface.co/datasets) relacionados a finanças, desde que sejam adequados ao contexto do desafio.
+| `historico_atendimento.csv` | CSV | Contextualizar interações anteriores (ex.: evitar repetição de respostas) |
+| `perfil_investidor.json` | JSON | Não utilizado neste agente (focado apenas em controle de gastos) |
+| `produtos_financeiros.json` | JSON | Não utilizado neste agente |
+| `transacoes.csv` | CSV | Principal fonte de dados: análise de padrão de gastos do cliente |
 
 ---
 
@@ -20,7 +17,13 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 
 > Você modificou ou expandiu os dados mockados? Descreva aqui.
 
-[Sua descrição aqui]
+O arquivo transacoes.csv foi substituído por uma versão mockada criada especificamente para este projeto.
+Essa versão contém categorias como Alimentação, Transporte, Entretenimento, Restaurantes, Saúde e Compras, com valores simulados para um mês de transações.
+Essa adaptação permite que o agente JULLIUS:
+- Some gastos por categoria.
+- Compare com limites pré-definidos.
+- Gere alertas quando ultrapassados.
+- Sugira metas de economia simples.
 
 ---
 
@@ -29,12 +32,15 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 ### Como os dados são carregados?
 > Descreva como seu agente acessa a base de conhecimento.
 
-[ex: Os JSON/CSV são carregados no início da sessão e incluídos no contexto do prompt]
+Os arquivos CSV/JSON são carregados no início da sessão do agente.
+No protótipo em Python, o transacoes.csv é lido com pandas e os dados são agregados por categoria.
 
 ### Como os dados são usados no prompt?
 > Os dados vão no system prompt? São consultados dinamicamente?
 
-[Sua descrição aqui]
+- Os dados não são incluídos diretamente no system prompt.
+- São consultados dinamicamente durante a interação: o agente recebe os totais por categoria e responde com base nesses valores.
+- O system prompt define as regras gerais de comportamento; os dados alimentam as respostas em tempo real.
 
 ---
 
@@ -45,11 +51,17 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 ```
 Dados do Cliente:
 - Nome: João Silva
-- Perfil: Moderado
-- Saldo disponível: R$ 5.000
+- Perfil: Público geral
+- Limites definidos:
+   - Restaurantes: R$ 350
+   - Transporte: R$ 300
+   - Alimentação: R$ 600
 
 Últimas transações:
-- 01/11: Supermercado - R$ 450
-- 03/11: Streaming - R$ 55
-...
+- 01/03: Supermercado Bom Preço - R$ 250 (Alimentação)
+- 02/03: Uber - R$ 45 (Transporte)
+- 05/03: Restaurante Sabor Caseiro - R$ 120 (Restaurantes)
+- 07/03: Posto Shell - R$ 200 (Transporte)
+- 15/03: Delivery Pizza - R$ 85 (Restaurantes)
+- 27/03: Restaurante Gourmet - R$ 150 (Restaurantes)
 ```
