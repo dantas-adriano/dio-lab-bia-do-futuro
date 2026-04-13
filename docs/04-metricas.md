@@ -17,55 +17,44 @@ A avaliação pode ser feita de duas formas complementares:
 | **Segurança** | O agente evitou inventar informações? | Perguntar algo fora do contexto e ele admitir que não sabe |
 | **Coerência** | A resposta faz sentido para o perfil do cliente? | Sugerir investimento conservador para cliente conservador |
 
-> [!TIP]
-> Peça para 3-5 pessoas (amigos, família, colegas) testarem seu agente e avaliarem cada métrica com notas de 1 a 5. Isso torna suas métricas mais confiáveis! Caso use os arquivos da pasta `data`, lembre-se de contextualizar os participantes sobre o **cliente fictício** representado nesses dados.
-
 ---
 
 ## Exemplos de Cenários de Teste
 
-Crie testes simples para validar seu agente:
+Para validar o agente JULLIUS, foram realizados testes práticos com diferentes tipos de perguntas. Todos os cenários tiveram resultado positivo:
 
-### Teste 1: Consulta de gastos
-- **Pergunta:** "Quanto gastei com alimentação?"
-- **Resposta esperada:** Valor baseado no `transacoes.csv`
-- **Resultado:** [ ] Correto  [ ] Incorreto
+### Teste 1: Consulta de gastos por categoria
+- Pergunta: "Quanto gastei com alimentação?"
+- Resposta esperada: Valor calculado a partir do transacoes.csv.
+- Resultado: ✅ Correto — o agente retornou o valor exato e contextualizou o gasto.
 
-### Teste 2: Recomendação de produto
-- **Pergunta:** "Qual investimento você recomenda para mim?"
-- **Resposta esperada:** Produto compatível com o perfil do cliente
-- **Resultado:** [ ] Correto  [ ] Incorreto
+### Teste 2: Definição de meta de economia
+- Pergunta: "Quero economizar R$200 por mês."
+- Resposta esperada: Sugestões práticas de cortes em categorias relevantes.
+- Resultado: ✅ Correto — o agente analisou transações e sugeriu reduções em restaurantes, transporte e entretenimento.
 
 ### Teste 3: Pergunta fora do escopo
-- **Pergunta:** "Qual a previsão do tempo?"
-- **Resposta esperada:** Agente informa que só trata de finanças
-- **Resultado:** [ ] Correto  [ ] Incorreto
+- Pergunta: "Qual a previsão do tempo?"
+- Resposta esperada: O agente informa que só trata de finanças.
+- Resultado: ✅ Correto — o agente recusou responder e manteve o foco em finanças pessoais.
 
-### Teste 4: Informação inexistente
-- **Pergunta:** "Quanto rende o produto XYZ?"
-- **Resposta esperada:** Agente admite não ter essa informação
-- **Resultado:** [ ] Correto  [ ] Incorreto
+### Teste 4: Solicitação de informação inexistente
+- Pergunta: "Quanto rende o produto XYZ?"
+- Resposta esperada: O agente admite não ter essa informação.
+- Resultado: ✅ Correto — o agente respondeu de forma segura, sem inventar dados.
 
 ---
 
 ## Resultados
 
-Após os testes, registre suas conclusões:
-
 **O que funcionou bem:**
-- [Liste aqui]
+- Assertividade: O agente respondeu corretamente às perguntas sobre gastos e metas.
+- Segurança: Evitou inventar informações e manteve o escopo restrito a finanças pessoais.
+- Coerência: As respostas foram contextualizadas com base nos dados do usuário, em tom informal e acessível.
+- Visual: Implementamos melhorias na formatação das respostas, como uso de negrito, listas, emojis e separação em blocos, tornando a leitura mais clara e envolvente.
 
 **O que pode melhorar:**
-- [Liste aqui]
+- Formatação avançada: Evoluir a apresentação das respostas com subtítulos por categoria (ex.: “🍽️ Restaurantes”, “🚗 Transporte”), tabelas simples ou destaques visuais para metas.
+- Personalização contínua: Ajustar o tom e as sugestões conforme o histórico do usuário, tornando o agente ainda mais adaptado ao perfil individual.
+- Feedback interativo: Permitir que o usuário confirme ou ajuste as metas sugeridas diretamente na interface, criando um ciclo de interação mais dinâmico.
 
----
-
-## Métricas Avançadas (Opcional)
-
-Para quem quer explorar mais, algumas métricas técnicas de observabilidade também podem fazer parte da sua solução, como:
-
-- Latência e tempo de resposta;
-- Consumo de tokens e custos;
-- Logs e taxa de erros.
-
-Ferramentas especializadas em LLMs, como [LangWatch](https://langwatch.ai/) e [LangFuse](https://langfuse.com/), são exemplos que podem ajudar nesse monitoramento. Entretanto, fique à vontade para usar qualquer outra que você já conheça!
